@@ -7,13 +7,15 @@ const userScema=new Schema({
     },
     password:{
         type:String,
-        required
+        required:true
     },
-    createdAt:Date,
-    default:()=> Date.now(),
-    immutabale:true
+    createdAt:{
+        type:Date,
+        default:()=> Date.now(),
+        immutabale:true
+    },
 })
 
-const User=models.User || model("Users",userScema)
+const User=models.User || model("User",userScema)
 
 export default User
