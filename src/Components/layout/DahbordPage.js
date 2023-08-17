@@ -14,7 +14,7 @@ async function DahbordPage({children}) {
           <Link href={"/dashboard"} className="text-gray-600 text-md">{session?.user.email}</Link>
           <Link href={"/dashboard/profile"}>حساب کاربری</Link>
           <Link href={"/dashboard/profile"}>آگهی های من</Link>
-          <Link href={"/dashboard/profile"}>ثبت آگهی</Link>
+          <Link href={"/dashboard/add"}>ثبت آگهی</Link>
           <LogoutButton/>
         </div>
         <div className='w-[100%]'>{children}</div>

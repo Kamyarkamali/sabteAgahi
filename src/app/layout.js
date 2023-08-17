@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body className={yekan.className}>
         <NextProvider>
         <Layout>
-          <div className='min-h-[500px]'>
+          <div className='min-h-[900px]'>
         {children}
           </div>
         </Layout>
