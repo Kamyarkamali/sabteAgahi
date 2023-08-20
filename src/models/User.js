@@ -14,6 +14,10 @@ const userScema=new Schema({
         default:()=> Date.now(),
         immutabale:true
     },
+    published:{
+        type:Boolean,
+        default:false
+    }
 })
 
 const User=models.User || model("User",userScema)

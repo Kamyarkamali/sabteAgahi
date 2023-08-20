@@ -7,6 +7,7 @@ import Card from './Card'
 import { FiEdit } from "react-icons/fi"
 import { AiOutlineDelete } from "react-icons/ai"
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 function DashboardCard({item}) {
 
@@ -14,6 +15,21 @@ function DashboardCard({item}) {
 
   const editHandeler=()=>{
     router.push(`/dashboard/profile/${item._id}`)
+  }
+
+  const deletHandeler=async()=>{
+    const res=await fetch(`/api/profile/delete/${item._id}`,{
+      method:"DELETE",
+    })
+    const data=await res.json()
+    console.log(data)
+
+    if(data.error){
+      toast.error(data.error)
+    }else{
+      toast.success(data.message)
+      router.refresh()
+    }
   }
 
   return (
@@ -24,7 +40,7 @@ function DashboardCard({item}) {
             ویرایش
             <FiEdit/>
           </button>
-          <button className='flex items-center justify-center border-red-500 text-red-700 border-[2px] p-1 w-[130px] rounded-md'>
+          <button onClick={deletHandeler} className='flex items-center justify-center border-red-500 text-red-700 border-[2px] p-1 w-[130px] rounded-md'>
             حذف
             <AiOutlineDelete/>
           </button>

@@ -20,7 +20,7 @@ function Header() {
                     <Link href={"/"}>صفحه اصلی</Link>
                 </li>
                 <li>
-                    <Link href={"/"}>آگهی ها</Link>
+                    <Link href={"/credentials"}>آگهی ها</Link>
                 </li>
             </ul>
         </div>

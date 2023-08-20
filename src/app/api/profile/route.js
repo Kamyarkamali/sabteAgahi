@@ -52,57 +52,6 @@ export async function POST(req){
 }
 
 
-// export async function PATCH(req){
-//     try{
-//         await connectDB()
-        
-//         const {_id,title,description,location,phone,price,realState,constructionDate,category,rules,amenities}=body
-
-//         const session=await getServerSession(req)
-
-
-//         if(!session){
-//             return NextResponse.json({error:"حساب کاربری وجود ندارد"},{status:401})
-//         }
-
-//         const user=await User.findOne({email:session.user.email})
-
-
-//         if(!user){
-//             return NextResponse.json({error:"حساب کاربری وجود ندارد"},{status:401})
-//         }
-
-//         if(!_id||!title || !description || !location || !phone || !price || !realState || !constructionDate || !category || !rules || !amenities){
-//             return NextResponse.json({error:"فیلد ها را پر کنید"},{status:402})
-//         }
-
-//         const profile=await Profile.findOne({_id})
-
-//         if(!user._id.equals(profile.userId)){
-//             return NextResponse.json({error:"دسترسی شما به آگهی محدود شده"},{status:403})
-//         }
-
-//         profile.title=title;
-//         profile.description=description
-//         profile.location=location
-//         profile.phone=phone
-//         profile.price=price
-//         profile.realState=realState
-//         profile.amenities=amenities
-//         price.rules=rules
-//         profile.category=category
-//         profile.constructionDate=constructionDate 
-//         profile.save()
-
-//         return NextResponse.json({messegae:"آگهی با موفقیت ویرایش شد "},{status:201})
-
-//     }catch(error){
-//         console.log(error)
-//         return NextResponse.json({error:"مشکلی در سرور رخ داده"},{status:500})
-//     }
-// }
-
-
 
 export async function PATCH(req) {
     try {
@@ -196,3 +145,16 @@ export async function PATCH(req) {
     }
   }
   
+
+export async function GET(req){
+  try{
+    await connectDB()
+
+    const profiles=await Profile.find().select("-userId")
+    return NextResponse.json({profiles},{status:200})
+
+  }catch(error){
+    console.log(error)
+    return NextResponse.json({error:"مشکلی در سرور پیش آمده"},{status:501})
+  }
+}

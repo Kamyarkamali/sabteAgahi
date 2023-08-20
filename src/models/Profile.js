@@ -41,6 +41,10 @@ const ProfileScema=new Schema({
     userId:{
         type:Schema.Types.ObjectId,
         ref:"User"
+    },
+    role:{
+        type:String,
+        default:"USER"
     }
 },{timestamps:true})
 
